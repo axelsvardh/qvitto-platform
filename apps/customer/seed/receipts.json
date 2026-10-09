@@ -1,0 +1,549 @@
+[
+  {
+    "id": 1,
+    "merchant": "ICA Kvantum Solna",
+    "amount": 31.08,
+    "currency": "SEK",
+    "category": "Mat",
+    "purchasedAt": "2026-08-10T12:00:00.000Z",
+    "storeAddress": "Solna Centrum, Solna",
+    "paymentMethodLast4": "0192",
+    "vatAmount": 3.33,
+    "amountExVat": 27.75,
+    "lineItems": [
+      {
+        "name": "Bananer 1,2 kg",
+        "price": 31.08
+      }
+    ],
+    "returnDeadline": "2026-08-24T12:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "merchant": "Apotek Hjärtat",
+    "amount": 128.5,
+    "currency": "SEK",
+    "category": "Hälsa",
+    "purchasedAt": "2026-08-10T17:13:00.000Z",
+    "storeAddress": "Sankt Eriksgatan 48, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 25.7,
+    "amountExVat": 102.8,
+    "lineItems": [
+      {
+        "name": "D-vitamin 90 st",
+        "price": 79
+      },
+      {
+        "name": "Alvedon 500mg",
+        "price": 49.5
+      }
+    ],
+    "returnDeadline": "2026-08-24T17:13:00.000Z"
+  },
+  {
+    "id": 3,
+    "merchant": "Willys Hornsgatan",
+    "amount": 174.98,
+    "currency": "SEK",
+    "category": "Mat",
+    "purchasedAt": "2026-08-10T22:26:00.000Z",
+    "storeAddress": "Hornsgatan 92, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 18.75,
+    "amountExVat": 156.23,
+    "lineItems": [
+      {
+        "name": "Bananer 1,2 kg",
+        "price": 31.08
+      },
+      {
+        "name": "Kaffe Zoégas 450g",
+        "price": 79
+      },
+      {
+        "name": "Bregott 600g",
+        "price": 64.9
+      }
+    ],
+    "returnDeadline": "2026-08-24T22:26:00.000Z"
+  },
+  {
+    "id": 4,
+    "merchant": "SL Reskassa",
+    "amount": 422,
+    "currency": "SEK",
+    "category": "Transport",
+    "purchasedAt": "2026-08-09T15:07:00.000Z",
+    "storeAddress": "T-Centralen, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 23.89,
+    "amountExVat": 398.11,
+    "lineItems": [
+      {
+        "name": "Påfyllning reskassa",
+        "price": 380
+      },
+      {
+        "name": "Enkelbiljett",
+        "price": 42
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "merchant": "Clas Ohlson",
+    "amount": 418,
+    "currency": "SEK",
+    "category": "Hem",
+    "purchasedAt": "2026-08-09T20:20:00.000Z",
+    "storeAddress": "Kungsgatan 23, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 83.6,
+    "amountExVat": 334.4,
+    "lineItems": [
+      {
+        "name": "Batterier AA 8-pack",
+        "price": 50
+      },
+      {
+        "name": "LED-lampa E27",
+        "price": 69
+      },
+      {
+        "name": "Skruvdragare 12V",
+        "price": 299
+      }
+    ],
+    "returnDeadline": "2026-09-08T20:20:00.000Z"
+  },
+  {
+    "id": 6,
+    "merchant": "Taxi Stockholm",
+    "amount": 422,
+    "currency": "SEK",
+    "category": "Transport",
+    "purchasedAt": "2026-08-09T13:33:00.000Z",
+    "storeAddress": "Södermalm, Stockholm",
+    "paymentMethodLast4": "0192",
+    "vatAmount": 23.89,
+    "amountExVat": 398.11,
+    "lineItems": [
+      {
+        "name": "Enkelbiljett",
+        "price": 42
+      },
+      {
+        "name": "Påfyllning reskassa",
+        "price": 380
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "merchant": "Espresso House",
+    "amount": 85,
+    "currency": "SEK",
+    "category": "Café",
+    "purchasedAt": "2026-08-08T18:14:00.000Z",
+    "storeAddress": "Sveavägen 44, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 17,
+    "amountExVat": 68,
+    "lineItems": [
+      {
+        "name": "Kanelbulle",
+        "price": 39
+      },
+      {
+        "name": "Flat white",
+        "price": 46
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "merchant": "H&M Drottninggatan",
+    "amount": 748,
+    "currency": "SEK",
+    "category": "Kläder",
+    "purchasedAt": "2026-08-07T21:21:00.000Z",
+    "storeAddress": "Drottninggatan 53, Stockholm",
+    "paymentMethodLast4": "0192",
+    "vatAmount": 149.6,
+    "amountExVat": 598.4,
+    "lineItems": [
+      {
+        "name": "T-shirt vit",
+        "price": 149
+      },
+      {
+        "name": "Ullkappa svart, S",
+        "price": 499
+      },
+      {
+        "name": "Strumpor 3-pack",
+        "price": 100
+      }
+    ],
+    "returnDeadline": "2026-09-06T21:21:00.000Z"
+  },
+  {
+    "id": 9,
+    "merchant": "Coop Konsum",
+    "amount": 34.5,
+    "currency": "SEK",
+    "category": "Mat",
+    "purchasedAt": "2026-08-07T14:34:00.000Z",
+    "storeAddress": "Odenplan, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 3.7,
+    "amountExVat": 30.8,
+    "lineItems": [
+      {
+        "name": "Tomater kvist",
+        "price": 34.5
+      }
+    ],
+    "returnDeadline": "2026-08-21T14:34:00.000Z"
+  },
+  {
+    "id": 10,
+    "merchant": "Systembolaget",
+    "amount": 149,
+    "currency": "SEK",
+    "category": "Dryck",
+    "purchasedAt": "2026-08-06T12:28:00.000Z",
+    "storeAddress": "Odengatan 65, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 29.8,
+    "amountExVat": 119.2,
+    "lineItems": [
+      {
+        "name": "Barolo 2019",
+        "price": 149
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "merchant": "Apotek Hjärtat",
+    "amount": 128.5,
+    "currency": "SEK",
+    "category": "Hälsa",
+    "purchasedAt": "2026-08-05T15:35:00.000Z",
+    "storeAddress": "Sankt Eriksgatan 48, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 25.7,
+    "amountExVat": 102.8,
+    "lineItems": [
+      {
+        "name": "Alvedon 500mg",
+        "price": 49.5
+      },
+      {
+        "name": "D-vitamin 90 st",
+        "price": 79
+      }
+    ],
+    "returnDeadline": "2026-08-19T15:35:00.000Z"
+  },
+  {
+    "id": 12,
+    "merchant": "Clas Ohlson",
+    "amount": 418,
+    "currency": "SEK",
+    "category": "Hem",
+    "purchasedAt": "2026-08-04T18:42:00.000Z",
+    "storeAddress": "Kungsgatan 23, Stockholm",
+    "paymentMethodLast4": "0192",
+    "vatAmount": 83.6,
+    "amountExVat": 334.4,
+    "lineItems": [
+      {
+        "name": "Skruvdragare 12V",
+        "price": 299
+      },
+      {
+        "name": "LED-lampa E27",
+        "price": 69
+      },
+      {
+        "name": "Batterier AA 8-pack",
+        "price": 50
+      }
+    ],
+    "returnDeadline": "2026-09-03T18:42:00.000Z"
+  },
+  {
+    "id": 13,
+    "merchant": "Taxi Stockholm",
+    "amount": 422,
+    "currency": "SEK",
+    "category": "Transport",
+    "purchasedAt": "2026-08-04T23:55:00.000Z",
+    "storeAddress": "Södermalm, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 23.89,
+    "amountExVat": 398.11,
+    "lineItems": [
+      {
+        "name": "Enkelbiljett",
+        "price": 42
+      },
+      {
+        "name": "Påfyllning reskassa",
+        "price": 380
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "merchant": "Pressbyrån",
+    "amount": 64,
+    "currency": "SEK",
+    "category": "Övrigt",
+    "purchasedAt": "2026-08-03T21:49:00.000Z",
+    "storeAddress": "Stockholm C",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 12.8,
+    "amountExVat": 51.2,
+    "lineItems": [
+      {
+        "name": "Bulle + kaffe",
+        "price": 39
+      },
+      {
+        "name": "Kvällstidning",
+        "price": 25
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "merchant": "Coop Konsum",
+    "amount": 34.5,
+    "currency": "SEK",
+    "category": "Mat",
+    "purchasedAt": "2026-08-02T12:56:00.000Z",
+    "storeAddress": "Odenplan, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 3.7,
+    "amountExVat": 30.8,
+    "lineItems": [
+      {
+        "name": "Tomater kvist",
+        "price": 34.5
+      }
+    ],
+    "returnDeadline": "2026-08-16T12:56:00.000Z"
+  },
+  {
+    "id": 16,
+    "merchant": "Åhléns City",
+    "amount": 599,
+    "currency": "SEK",
+    "category": "Kläder",
+    "purchasedAt": "2026-08-01T15:03:00.000Z",
+    "storeAddress": "Klarabergsgatan 50, Stockholm",
+    "paymentMethodLast4": "0192",
+    "vatAmount": 119.8,
+    "amountExVat": 479.2,
+    "lineItems": [
+      {
+        "name": "Ullkappa svart, S",
+        "price": 499
+      },
+      {
+        "name": "Strumpor 3-pack",
+        "price": 100
+      }
+    ],
+    "returnDeadline": "2026-08-31T15:03:00.000Z"
+  },
+  {
+    "id": 17,
+    "merchant": "Espresso House",
+    "amount": 85,
+    "currency": "SEK",
+    "category": "Café",
+    "purchasedAt": "2026-08-01T20:16:00.000Z",
+    "storeAddress": "Sveavägen 44, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 17,
+    "amountExVat": 68,
+    "lineItems": [
+      {
+        "name": "Flat white",
+        "price": 46
+      },
+      {
+        "name": "Kanelbulle",
+        "price": 39
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "merchant": "ICA Kvantum Solna",
+    "amount": 26.9,
+    "currency": "SEK",
+    "category": "Mat",
+    "purchasedAt": "2026-07-29T12:24:00.000Z",
+    "storeAddress": "Solna Centrum, Solna",
+    "paymentMethodLast4": "0192",
+    "vatAmount": 2.88,
+    "amountExVat": 24.02,
+    "lineItems": [
+      {
+        "name": "Knäckebröd",
+        "price": 26.9
+      }
+    ],
+    "returnDeadline": "2026-08-12T12:24:00.000Z"
+  },
+  {
+    "id": 19,
+    "merchant": "Systembolaget",
+    "amount": 40,
+    "currency": "SEK",
+    "category": "Dryck",
+    "purchasedAt": "2026-07-25T12:52:00.000Z",
+    "storeAddress": "Odengatan 65, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 8,
+    "amountExVat": 32,
+    "lineItems": [
+      {
+        "name": "Mineralvatten 6-pack",
+        "price": 40
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "merchant": "Coop Konsum",
+    "amount": 64.9,
+    "currency": "SEK",
+    "category": "Mat",
+    "purchasedAt": "2026-07-21T12:20:00.000Z",
+    "storeAddress": "Odenplan, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 6.95,
+    "amountExVat": 57.95,
+    "lineItems": [
+      {
+        "name": "Bregott 600g",
+        "price": 64.9
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "merchant": "ICA Kvantum Solna",
+    "amount": 79,
+    "currency": "SEK",
+    "category": "Mat",
+    "purchasedAt": "2026-07-17T12:48:00.000Z",
+    "storeAddress": "Solna Centrum, Solna",
+    "paymentMethodLast4": "0192",
+    "vatAmount": 8.46,
+    "amountExVat": 70.54,
+    "lineItems": [
+      {
+        "name": "Kaffe Zoégas 450g",
+        "price": 79
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "merchant": "Systembolaget",
+    "amount": 149,
+    "currency": "SEK",
+    "category": "Dryck",
+    "purchasedAt": "2026-07-13T12:16:00.000Z",
+    "storeAddress": "Odengatan 65, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 29.8,
+    "amountExVat": 119.2,
+    "lineItems": [
+      {
+        "name": "Barolo 2019",
+        "price": 149
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "merchant": "Coop Konsum",
+    "amount": 26.9,
+    "currency": "SEK",
+    "category": "Mat",
+    "purchasedAt": "2026-07-09T12:44:00.000Z",
+    "storeAddress": "Odenplan, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 2.88,
+    "amountExVat": 24.02,
+    "lineItems": [
+      {
+        "name": "Knäckebröd",
+        "price": 26.9
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "merchant": "ICA Kvantum Solna",
+    "amount": 31.08,
+    "currency": "SEK",
+    "category": "Mat",
+    "purchasedAt": "2026-07-05T12:12:00.000Z",
+    "storeAddress": "Solna Centrum, Solna",
+    "paymentMethodLast4": "0192",
+    "vatAmount": 3.33,
+    "amountExVat": 27.75,
+    "lineItems": [
+      {
+        "name": "Bananer 1,2 kg",
+        "price": 31.08
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "merchant": "Systembolaget",
+    "amount": 149,
+    "currency": "SEK",
+    "category": "Dryck",
+    "purchasedAt": "2026-07-01T12:40:00.000Z",
+    "storeAddress": "Odengatan 65, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 29.8,
+    "amountExVat": 119.2,
+    "lineItems": [
+      {
+        "name": "Barolo 2019",
+        "price": 149
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "merchant": "Coop Konsum",
+    "amount": 34.5,
+    "currency": "SEK",
+    "category": "Mat",
+    "purchasedAt": "2026-06-27T12:08:00.000Z",
+    "storeAddress": "Odenplan, Stockholm",
+    "paymentMethodLast4": "4471",
+    "vatAmount": 3.7,
+    "amountExVat": 30.8,
+    "lineItems": [
+      {
+        "name": "Tomater kvist",
+        "price": 34.5
+      }
+    ]
+  }
+]

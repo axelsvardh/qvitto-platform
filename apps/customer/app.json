@@ -1,0 +1,16 @@
+{
+  "android": {
+    "package": "com.axelsvardh.qvittoapp"
+  },
+  "ios": {
+    "bundleIdentifier": "com.axelsvardh.qvittoapp",
+    "infoPlist": {
+      "ITSAppUsesNonExemptEncryption": false
+    }
+  },
+  "extra": {
+    "eas": {
+      "projectId": "394d21d2-beb0-47c0-837a-455082ceba47"
+    }
+  }
+}
