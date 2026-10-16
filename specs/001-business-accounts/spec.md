@@ -1,6 +1,6 @@
 # 001: Business accounts and store access
 
-Status: DRAFT (waiting for Axel's approval)
+Status: READY FOR REVIEW (open questions answered 2026-10-16, approved when the PR is merged)
 Owner: Axel
 
 ## Why
@@ -15,7 +15,7 @@ Nothing else in the business app can be built until a store owns its receipts, a
 A store owner can create a business account, add their store, connect their till with a store API key, and invite staff. Each receipt the till sends then belongs to that store, and only that organisation's people can see it.
 
 ## Out of scope (later specs)
-- Business app screens beyond login (receipt list, stats, returns).
+- All business app screens, including login. This spec is backend only, and the app shell comes in a later spec.
 - Self-service org-number verification or BankID. For the pilot, a Qvitto admin activates organisations by hand.
 - Billing and pricing.
 - Companies that collect receipts for bookkeeping (option B).
@@ -54,7 +54,7 @@ A store owner can create a business account, add their store, connect their till
 
 ### Separation and security
 - **AC15**: Given a customer token, when it is used on any `/api/business/*` endpoint, then the API answers 401/403. The same goes the other way: a business token on customer endpoints.
-- **AC16**: `GET /api/users` is removed. No endpoint returns password hashes.
+- **AC16**: `GET /api/users` is removed. No endpoint returns password hashes, including the customer `POST /api/register` response, which returns one today.
 - **AC17**: Given `JWT_SECRET` is not set, when the server starts, then it refuses to start. There is no hard-coded fallback.
 
 ## Data (conceptual, the plan decides the details)
@@ -67,8 +67,12 @@ A store owner can create a business account, add their store, connect their till
 
 Personal data touched: business user name and email. No new customer data.
 
-## Open questions (answer before planning)
-1. **Separate login for business users?** The proposal is yes: a separate `BusinessUser` with its own login, not a role on the customer `User`. That's simpler and safer. One person can still have both accounts.
-2. **Admin activation:** OK to do it by hand for the pilot (a script or an admin-only endpoint)?
-3. **Can one business user belong to several organisations?** The data model allows it. The business app can start with one.
-4. **Existing receipts in the database:** are they all test data that can be deleted?
+## Decisions (answered by Axel, 2026-10-16)
+1. **Separate login for business users: yes.** `BusinessUser` is its own account type with its own login and token. One person can still have both a customer and a business account.
+2. **Admin activation by hand: yes.** For the pilot it's a script run by a Qvitto admin. There is no admin UI or endpoint.
+3. **Several organisations per business user: yes.** An organisation can have several stores, and a business user can be a member of several organisations, with a different role in each. API calls name the organisation in the path, so access is always checked against that one membership.
+4. **Existing receipts are test data:** they're deleted in the migration that makes `Receipt.storeId` required.
+
+### Added from the decisions
+- **AC18**: Given a business user who is `OWNER` in organisation X and `STAFF` in organisation Y, when they call Y's owner-only endpoints, then the API answers 403. They keep full owner access in X.
+- **AC19**: Given a logged-in business user, when they ask who they are (`/me`), then they get every organisation they belong to, with their role and which stores they can see in each.
