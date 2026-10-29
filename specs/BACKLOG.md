@@ -16,6 +16,7 @@ Specs are per **feature**, not per app. One spec can touch several parts. Each t
 | 006 | Forgot password | api, customer | Idea |
 | 007 | Share receipt as PDF (DELA PDF) | customer | Idea |
 | 008 | Business app shell and login | business | Waiting for business app design |
+| 009 | CI and review notifications | infra | Ready for review |
 | — | BankID, öppet köp from store data, export to bookkeeping | | Later |
 
 Customer app reference for how it works today: `apps/customer/design-handoff/SCREENS.md`.
