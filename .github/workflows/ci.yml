@@ -1,0 +1,53 @@
+# Spec 009: lint and test every PR, then tell the repo owner it's ready for review.
+name: CI
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches: [main]
+
+# One run per PR; a new push cancels the old run so a stale green never posts.
+concurrency:
+  group: ci-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  customer:
+    name: Customer app
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Lint
+        run: npm run lint --workspace apps/customer
+      - name: Test
+        run: npm test --workspace apps/customer -- --ci
+
+  # Claude opens PRs as the repo owner, and GitHub never notifies you about
+  # your own actions. A mention from github-actions[bot] does reach the
+  # GitHub app. Add any new check job to `needs` so this waits for it.
+  ready-for-review:
+    name: Ready for review
+    needs: [customer]
+    if: github.event_name == 'pull_request' && !github.event.pull_request.draft
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+    steps:
+      - name: Mention the owner
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ github.event.pull_request.number }}
+          SHA: ${{ github.event.pull_request.head.sha }}
+          OWNER: ${{ github.repository_owner }}
+        run: |
+          gh pr comment "$PR" --repo "$GITHUB_REPOSITORY" \
+            --body "@$OWNER CI is green on \`${SHA::7}\`. This PR is ready for review."
