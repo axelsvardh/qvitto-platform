@@ -3,7 +3,7 @@ url: http://localhost:4000/api/pos/receipts
 method: POST
 headers:
   Content-Type: application/json
-  x-api-key: test-pos-key
+  x-api-key: "{{posApiKey}}"
 body:
   type: json
   content: |-

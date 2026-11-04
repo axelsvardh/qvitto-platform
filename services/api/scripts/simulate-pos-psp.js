@@ -1,6 +1,10 @@
 const BASE_URL = process.env.API_BASE_URL || "http://localhost:4000";
-const PSP_API_KEY = process.env.PSP_API_KEY || "test-psp-key";
-const POS_API_KEY = process.env.POS_API_KEY || "test-pos-key";
+const PSP_API_KEY = process.env.PSP_API_KEY;
+const POS_API_KEY = process.env.POS_API_KEY;
+if (!PSP_API_KEY || !POS_API_KEY) {
+  console.error("Set PSP_API_KEY and POS_API_KEY (the same values as the API's .env).");
+  process.exit(1);
+}
 
 const TEST_USER = { email: "test@qvitto.se", password: "password123" };
 

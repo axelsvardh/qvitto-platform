@@ -31,12 +31,25 @@ jobs:
       - name: Test
         run: npm test --workspace apps/customer -- --ci
 
+  api:
+    name: API
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Test
+        run: npm test --workspace services/api
+
   # Claude opens PRs as the repo owner, and GitHub never notifies you about
   # your own actions. A mention from github-actions[bot] does reach the
   # GitHub app. Add any new check job to `needs` so this waits for it.
   ready-for-review:
     name: Ready for review
-    needs: [customer]
+    needs: [customer, api]
     if: github.event_name == 'pull_request' && !github.event.pull_request.draft
     runs-on: ubuntu-latest
     permissions:

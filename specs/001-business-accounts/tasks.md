@@ -3,7 +3,7 @@
 Tick these off in order. Each task is a small commit and names the ACs it covers. The PR is done when every AC has a passing test.
 
 - [ ] **T1 Test setup:** split `app.js` / `server.js`, add Vitest and Supertest, a test DB script and an `npm test` script. Write one smoke test.
-- [ ] **T2 Config and quick security fixes:** add `src/config.js` (JWT_SECRET required), remove the secret fallbacks, delete `GET /api/users`, add `toPublicUser()`. *(AC16, AC17)*
+- [ ] **T2 Config and quick security fixes:** add `src/config.js` (JWT_SECRET required), remove the secret fallbacks, delete `GET /api/users`, add `toPublicUser()`. *(AC16, AC17)* *(Moved to spec 010. 001 keeps only the per-store keys and business accounts.)*
 - [ ] **T3 Prisma schema and migration:** add the new models and enums, delete the test receipts, make `Receipt.storeId` required. *(data for all ACs)*
 - [ ] **T4 Token audiences:** add `aud` to customer tokens, add `authenticateBusiness`, and make customer auth reject business tokens and vice versa. *(AC15)*
 - [ ] **T5 Business signup and login.** *(AC1, AC2, AC3)*
