@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import {
   View,
   Text,
@@ -10,7 +10,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { useRouter } from "expo-router";
+import { Redirect, useLocalSearchParams, useRouter } from "expo-router";
 import Svg, { Rect, Path } from "react-native-svg";
 import { AuthContext } from "../context/AuthContext";
 import { color, type } from "../theme/qvitto";
@@ -67,7 +67,11 @@ function LockMark() {
 export default function LoginScreen() {
   const insets = useSafeAreaInsets();
   const router = useRouter();
-  const { login, register } = useContext(AuthContext);
+  const { user, loading, login, register } = useContext(AuthContext);
+  const { reason } = useLocalSearchParams();
+  // Set while this screen signs someone in, so the "already signed in"
+  // redirect below doesn't race the submit's own navigation (e.g. to /guide).
+  const submitting = useRef(false);
 
   const [mode, setMode] = useState("login"); // "login" | "new"
   const [name, setName] = useState("");
@@ -87,6 +91,7 @@ export default function LoginScreen() {
     }
     setBusy(true);
     setError(null);
+    submitting.current = true;
     try {
       if (isNew) {
         await register(name.trim(), email.trim(), password);
@@ -94,6 +99,7 @@ export default function LoginScreen() {
       await login(email.trim(), password);
       router.replace(isNew ? "/guide" : "/receipts");
     } catch (err) {
+      submitting.current = false;
       setError(
         err?.response?.data?.message ||
           (isNew ? "Kontot kunde inte skapas." : "Fel e-post eller lösenord.")
@@ -125,6 +131,13 @@ export default function LoginScreen() {
     );
   };
 
+  if (loading) {
+    return <View style={{ flex: 1, backgroundColor: color.bone }} />;
+  }
+  if (user && !submitting.current) {
+    return <Redirect href="/receipts" />;
+  }
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : undefined}
@@ -155,6 +168,19 @@ export default function LoginScreen() {
           <Tab id="login" label="LOGGA IN" />
           <Tab id="new" label="NYTT KONTO" />
         </View>
+
+        {reason === "expired" && !error && (
+          <Text
+            style={{
+              fontFamily: type.meta.fontFamily,
+              fontSize: 11,
+              color: color.concrete,
+              marginTop: 20,
+            }}
+          >
+            Du har loggats ut. Logga in igen.
+          </Text>
+        )}
 
         {isNew && (
           <Field
