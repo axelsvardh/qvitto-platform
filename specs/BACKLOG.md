@@ -21,6 +21,8 @@ Specs are per **feature**, not per app. One spec can touch several parts. Each t
 | 008 | Business app shell and login | #11 |
 | 009 | CI and review notifications | #3 |
 | 011 | TestFlight builds for the customer app (needs an Apple Developer account) | #12 |
+| 012 | English as the source language (changes constitution §6) | #14 |
+| 013 | Swedish translation | #15 |
 | — | Later: BankID, öppet köp from store data, export to bookkeeping | — |
 
 ## Board columns
