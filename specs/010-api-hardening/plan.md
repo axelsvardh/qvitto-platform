@@ -16,7 +16,7 @@
 5. **`requireApiKey(envVarName)`**, with no fallback. It answers 503 when the env var is unset and 401 when the header is missing or wrong (AC4, AC6). Startup config guarantees the POS and PSP keys are set, so in practice 503 only happens for Braintree.
 6. **`POST /api/bank/webhook`** moves into the `ENABLE_DEV_ENDPOINTS` block, behind `requireApiKey("POS_API_KEY")` (AC5).
 7. **Tests**: `vitest` and `supertest` in `services/api`, plus an `npm test` script. Prisma is mocked with `vi.mock("@prisma/client")`, so the tests need no database. One test per AC, named `AC1: ...` and so on.
-8. **CI**: an `api` job in `.github/workflows/ci.yml` that runs `npm test` in `services/api`, and `needs: [customer, api]` on `ready-for-review` (AC7).
+8. **CI**: an `api` job in `.github/workflows/ci.yml` that runs `npm test` in `services/api`, and `needs: [customer, api]` on `ready-for-review` (AC7). `main` is protected by the `Protect main` ruleset, which only requires `Customer app` today. After merge, add `API` there too, or `main` can still merge with failing API tests.
 9. **Docs**: list the required env vars in `services/api/README.md` and add a `.env.example` without real values.
 
 ## Risks
