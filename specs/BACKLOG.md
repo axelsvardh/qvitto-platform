@@ -1,9 +1,10 @@
 # Spec backlog
 
 Specs are per **feature**, not per app. One spec can touch several parts. Each task in `tasks.md` has an area tag, and each issue has the matching `area:*` label:
-- `[api]`: services/api
-- `[customer]`: apps/customer
-- `[business]`: apps/business
+- `[customer]`: the customer app (`apps/customer`) on iOS, Android, and its web build
+- `[business]`: the business app (`apps/business`)
+- `[web]`: the websites on GitHub Pages: landing page, customer site and business site (no folder yet)
+- `[api]`: `services/api`
 - `[infra]`: CI, hosting
 
 **Status and priority live on the [Qvitto board](https://github.com/users/axelsvardh/projects/1).** Every spec is an issue there. This file only lists which number belongs to which spec.
