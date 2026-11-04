@@ -1,11 +1,11 @@
 # Spec backlog
 
-Specs are per **feature**, not per app. One spec can touch several parts. Each task in `tasks.md` has an area tag, and each issue has the matching `area:*` label:
-- `[customer]`: the customer app (`apps/customer`) on iOS, Android, and its web build
-- `[business]`: the business app (`apps/business`)
-- `[web]`: the websites on GitHub Pages: landing page, customer site and business site (no folder yet)
-- `[api]`: `services/api`
-- `[infra]`: CI, hosting
+Specs are per **feature**, not per app. One spec can touch several parts. Each task in `tasks.md` has an area tag, and each issue has the matching label (`app:*` for what users see, `area:*` for the rest):
+- `[customer]` (`app:customer`): the customer app (`apps/customer`) on iOS, Android, and its web build
+- `[business]` (`app:business`): the business app (`apps/business`)
+- `[web]` (`app:web`): the websites on GitHub Pages: landing page, customer site and business site (no folder yet)
+- `[api]` (`area:api`): `services/api`
+- `[infra]` (`area:infra`): CI, hosting
 
 **Status and priority live on the [Qvitto board](https://github.com/users/axelsvardh/projects/1).** Every spec is an issue there. This file only lists which number belongs to which spec.
 
@@ -30,6 +30,6 @@ Specs are per **feature**, not per app. One spec can touch several parts. Each t
 - **In review:** PR open, CI green, waiting for Axel.
 - **Done:** merged.
 
-Priority is the `Priority` field (P1–P3), then the card order within a column. Areas are the `area:*` labels.
+Priority is the `Priority` field (P1–P3), then the card order within a column. Areas are the `app:*` and `area:*` labels.
 
 Customer app reference for how it works today: `apps/customer/design-handoff/SCREENS.md`.
