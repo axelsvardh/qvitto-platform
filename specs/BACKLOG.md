@@ -20,6 +20,7 @@ Specs are per **feature**, not per app. One spec can touch several parts. Each t
 | 007 | Share receipt as PDF (DELA PDF) | #10 |
 | 008 | Business app shell and login | #11 |
 | 009 | CI and review notifications | #3 |
+| 011 | TestFlight builds for the customer app (needs an Apple Developer account) | #12 |
 | — | Later: BankID, öppet köp from store data, export to bookkeeping | — |
 
 ## Board columns
