@@ -1,4 +1,6 @@
 {
+  "name": "Qvitto",
+  "slug": "qvitto-app",
   "android": {
     "package": "com.axelsvardh.qvittoapp"
   },
@@ -12,5 +14,8 @@
     "eas": {
       "projectId": "394d21d2-beb0-47c0-837a-455082ceba47"
     }
+  },
+  "web": {
+    "output": "single"
   }
 }
