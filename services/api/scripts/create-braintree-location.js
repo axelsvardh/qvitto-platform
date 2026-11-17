@@ -11,7 +11,11 @@ if (!locationName) {
 }
 
 const baseUrl = process.env.API_BASE_URL || "http://localhost:4000";
-const apiKey = process.env.BRAINTREE_CHARGE_API_KEY || "test-braintree-charge-key";
+const apiKey = process.env.BRAINTREE_CHARGE_API_KEY;
+if (!apiKey) {
+  console.error("Set BRAINTREE_CHARGE_API_KEY (the same value as the API's .env).");
+  process.exit(1);
+}
 
 async function main() {
   // Confirmed via GraphQL introspection (2026-08-30) — the full, real schema,

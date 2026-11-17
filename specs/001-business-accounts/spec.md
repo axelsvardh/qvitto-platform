@@ -54,8 +54,8 @@ A store owner can create a business account, add their store, connect their till
 
 ### Separation and security
 - **AC15**: Given a customer token, when it is used on any `/api/business/*` endpoint, then the API answers 401/403. The same goes the other way: a business token on customer endpoints.
-- **AC16**: `GET /api/users` is removed. No endpoint returns password hashes, including the customer `POST /api/register` response, which returns one today.
-- **AC17**: Given `JWT_SECRET` is not set, when the server starts, then it refuses to start. There is no hard-coded fallback.
+- **AC16**: `GET /api/users` is removed. No endpoint returns password hashes, including the customer `POST /api/register` response, which returns one today. *(Moved to spec 010.)*
+- **AC17**: Given `JWT_SECRET` is not set, when the server starts, then it refuses to start. There is no hard-coded fallback. *(Moved to spec 010.)*
 
 ## Data (conceptual, the plan decides the details)
 - **Organisation**: name, orgNumber (unique), status (`PENDING` | `ACTIVE` | `SUSPENDED`), createdAt
