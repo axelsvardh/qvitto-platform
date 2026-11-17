@@ -1,0 +1,93 @@
+# Spec 002: deploy staging after CI is green on main. Never on a red CI.
+name: Deploy staging
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+
+# Deploys run one at a time, oldest first, so staging never goes backwards.
+concurrency:
+  group: deploy-staging
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  api:
+    name: API to Render
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
+    runs-on: ubuntu-latest
+    environment: staging
+    env:
+      HOOK: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
+      API_URL: ${{ vars.STAGING_API_URL }}
+      SHA: ${{ github.event.workflow_run.head_sha }}
+    steps:
+      - name: Check staging is set up
+        run: |
+          if [ -z "$HOOK" ] || [ -z "$API_URL" ]; then
+            echo "::error::Staging isn't set up: add the RENDER_DEPLOY_HOOK_URL secret (staging environment) and the STAGING_API_URL repository variable. See specs/002-staging-environment/plan.md."
+            exit 1
+          fi
+      - name: Trigger the Render deploy
+        run: curl -fsS -X POST "${HOOK}&ref=${SHA}" -o /dev/null
+      - name: Wait until the new commit is live
+        run: |
+          # Free instances sleep and migrations run first, so allow 10 minutes.
+          for i in $(seq 1 60); do
+            live=$(curl -fsS --max-time 60 "$API_URL/health" | jq -r .commit 2>/dev/null || true)
+            if [ "$live" = "$SHA" ]; then
+              echo "Staging API is live on $SHA"
+              exit 0
+            fi
+            sleep 10
+          done
+          echo "::error::Staging API didn't report $SHA within 10 minutes. Check the deploy log in Render."
+          exit 1
+
+  web:
+    name: Web build to GitHub Pages
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    env:
+      API_URL: ${{ vars.STAGING_API_URL }}
+    steps:
+      - name: Check staging is set up
+        run: |
+          if [ -z "$API_URL" ]; then
+            echo "::error::Add the STAGING_API_URL repository variable first, or the web build would talk to localhost."
+            exit 1
+          fi
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Export the customer app for the web
+        working-directory: apps/customer
+        env:
+          EXPO_PUBLIC_API_URL: ${{ vars.STAGING_API_URL }}
+          EXPO_BASE_URL: /${{ github.event.repository.name }}
+        run: |
+          npx expo export --platform web --output-dir dist
+          # One-page app: let every deep link load index.html.
+          cp dist/index.html dist/404.html
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: apps/customer/dist
+      - id: deploy
+        uses: actions/deploy-pages@v4
