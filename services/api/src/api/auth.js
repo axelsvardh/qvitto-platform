@@ -3,7 +3,9 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const prisma = new PrismaClient();
-const JWT_SECRET = process.env.JWT_SECRET || "supersecretkey";
+
+// The only user fields an endpoint may return. Never the password hash.
+export const toPublicUser = (user) => ({ id: user.id, email: user.email, name: user.name });
 
 // --------- REGISTER ------------
 export const registerUser = async (req, res) => {
@@ -23,7 +25,7 @@ export const registerUser = async (req, res) => {
       data: { name, email, bankConnectionId: null, password: hashedPassword },
     });
 
-    res.json({ message: "Registrering lyckades", user });
+    res.json({ message: "Registrering lyckades", user: toPublicUser(user) });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
@@ -42,14 +44,14 @@ export const loginUser = async (req, res) => {
 
     const token = jwt.sign(
       { userId: user.id, email: user.email },
-      JWT_SECRET,
+      process.env.JWT_SECRET,
       { expiresIn: "7d" }
     );
 
     res.json({
       message: "Inloggning lyckades",
       token,
-      user: { id: user.id, email: user.email, name: user.name },
+      user: toPublicUser(user),
     });
   } catch (err) {
     res.status(500).json({ error: err.message });

@@ -1,7 +1,5 @@
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = process.env.JWT_SECRET || "supersecretkey";
-
 export const authenticateToken = (req, res, next) => {
   const authHeader = req.headers["authorization"];
   const token = authHeader && authHeader.split(" ")[1];
@@ -9,7 +7,8 @@ export const authenticateToken = (req, res, next) => {
   if (!token)
     return res.status(401).json({ message: "Ingen token tillhandahölls" });
 
-  jwt.verify(token, JWT_SECRET, (err, user) => {
+  // JWT_SECRET is guaranteed by assertRequiredEnv() at startup.
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
     if (err) return res.status(403).json({ message: "Ogiltig token" });
     req.user = user; // innehåller userId & email
     next();
