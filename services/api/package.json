@@ -8,7 +8,8 @@
     "dev": "nodemon src/server.js",
     "start": "node src/server.js",
     "postinstall": "prisma generate",
-    "test": "vitest run"
+    "test": "vitest run",
+    "start:staging": "prisma migrate deploy && node src/server.js"
   },
   "keywords": [],
   "author": "",
