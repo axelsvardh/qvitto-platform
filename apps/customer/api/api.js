@@ -10,6 +10,9 @@ const BACKEND_PORT = 4000;
 // used it to serve this very JS bundle to the device) — reuse that instead of
 // a hardcoded IP that breaks on every network change. Only present in dev.
 function resolveBaseURL() {
+  // Staging and other hosted builds set this at build time (spec 002).
+  // Expo inlines EXPO_PUBLIC_* vars, so it must be read by its full name.
+  if (process.env.EXPO_PUBLIC_API_URL) return process.env.EXPO_PUBLIC_API_URL;
   const hostUri = Constants.expoConfig?.hostUri || Constants.expoGoConfig?.hostUri;
   const lanHost = hostUri?.split(":")?.[0];
   if (lanHost && Platform.OS !== "web") return `http://${lanHost}:${BACKEND_PORT}`;

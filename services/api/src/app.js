@@ -46,6 +46,12 @@ export function createApp() {
     res.send("Kvitto backend live!");
   });
 
+  // Public on purpose (spec 002): hosting health checks and the deploy
+  // workflow use it. `commit` tells the workflow which version is live.
+  app.get("/health", (req, res) => {
+    res.json({ status: "ok", commit: process.env.RENDER_GIT_COMMIT || null });
+  });
+
   app.get("/api/transactions", authenticateToken, getAllTransactions);
   app.post("/api/transactions", authenticateToken, createTransaction);
 
